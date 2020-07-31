@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="cntdown.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="seconds" placeholder="Enter your time">
+        <div id="countdown">
+            <svg :width="size" :height="size">
+                <circle fill="transparent" :stroke-width="stroke" stroke="#eee" :r="radius" :cx="circleOffset"
+                    :cy="circleOffset">
+                </circle>
+                <circle class="circle" fill="transparent" :stroke-width="stroke" stroke="orange" :r="radius"
+                    :cx="circleOffset" :cy="circleOffset" :stroke-dasharray="circumference"
+                    :stroke-dashoffset="progress" stroke-linecap="round">
+                </circle>
+            </svg>
+            <span>{{ countdown }}</span>
+        </div>
+        <button @click='animate'>Animate!</button>
+    </div>
+</body>
+<script src="cntdown.js"></script>
+
+</html>

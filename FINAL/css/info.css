@@ -1,0 +1,148 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+body {
+    font-family: "微软雅黑";
+    font-size:15px;
+    color:#333;
+}
+a{
+    text-decoration: none;
+    color: #232323;
+}
+.main-header{
+    position: relative;
+    z-index: 99;
+    height: 40px;
+    font-size: 12px;
+    color: #b0b0b0;
+    background: #333;
+}
+.main-header .main-nav{
+    width: 1226px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+.main-nav .list, .login{
+    display: flex;
+}
+.main-nav .list .item{
+    color: #b0b0b0;
+    margin-right: 15px;
+}
+.main-nav .login .item{
+    color: #b0b0b0;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 15px;
+}
+#banner {
+    width: 560px;
+    height: 560px;
+    margin: 0 auto;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.container-1{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1226px;
+    margin: 0 auto;
+    height: 100px;
+}
+.container-1 img{
+    display: block;
+    width: 52px;
+    height: 52px;
+}
+.container-1 .hid-content{
+    position: absolute;
+    top: 100px;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 0;
+    background: #fff;
+    overflow: hidden;
+    transition: height .28s;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 12px;
+}
+.container-1 .hid-content .hid-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container-1 .hid-content .hid-item img{
+    width: 160px;
+    height: 110px;
+    border-right: 1px solid #ddd;
+}
+.container-1:hover  .hid-content{
+    height: 200px;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.4);    
+}
+.container-1 .nav-list{
+    margin-left: 14px;
+}
+.container-1 .nav-list .item{
+    color: #333;
+    font-size: 16px;
+    transition: color .3s ease-in-out;
+    margin-right: 15px;
+}
+.container-1 .nav-list .item:hover{
+    color: #f40;
+}
+.container-1 input{
+    width: 223px;
+    height: 48px;
+    border: 1px solid #e0e0e0;
+    text-align: right;
+    padding: 10px;
+}
+#searcbar{
+    width: 270px;
+    height: 50px;
+    padding: 10px;
+}
+.container-1 #search{
+    width: 48px;
+    height: 48px;
+    border: 1px solid #e0e0e0;
+    text-align: right;
+    padding: 9px;
+}
+.fix-tool{
+    position: fixed;
+    top: 75%;
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    left: 50%;
+    margin-left: 615px;
+    border: 1px solid #ccc;
+}
+.fix-tool a{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+}
+.fix-tool a:hover{
+    background: rgba(0,0,0,0.3);
+}

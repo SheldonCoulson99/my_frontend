@@ -1,0 +1,39 @@
+new Vue({
+    el:"#app",
+    data:{
+        size:120,
+        stroke:10,
+        percentage:100,
+        timer: null,
+        seconds: null,
+    },
+    computed:{
+        radius(){
+            return (this.size / 2) - (this.stroke / 2);
+        },
+        circleOffset(){
+            return this.size / 2;
+        },
+        circumference(){
+            return this.radius * 2 * Math.PI;
+        },
+        progress(){
+            return this.circumference - this.circumference * this.percentage /100;
+        },
+        countdown(){
+            return Math.ceil(this.seconds * this.percentage / 100)
+        }
+    },
+    methods:{
+        animate(){
+            this.timer = setInterval(()=> {
+                this.percentage-= 0.1;
+
+                if(this.percentage <= 0){
+                    clearInterval(this.timer)
+                    this.percentage = 100;
+                }
+            }, this.seconds)
+        }
+    }
+})

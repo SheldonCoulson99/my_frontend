@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./css/cart.css">
+        <script src="jquery-3.3.1.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="mini-header">
+                <div class="container">
+                    <a href="index.html"><img id="logo" src="img/logo-1.jpg" alt=""></a>
+                    <div id="cart-title">
+                        <span id="cart_title">我的购物车</span>
+                        <span>温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</span>
+                    </div>
+                    <div id="lg">
+                        <a href=""> 登录</a> | <a href="">注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="box">
+            <ul>
+            </ul>
+        </div>
+        <div class="ckbtn">
+            <div class="check_out" id="checkoutbtn">
+                <a href="#"><span>
+                    立即下单
+                </span></a>
+            </div>
+        </div>
+        <div id="car" class="car">
+            <div class="head_row hid">
+                <div class="img left">&nbsp;</div>
+                <div class="name left">商品名称</div>
+                <div class="price left">单价</div>
+                <div class="ctrl left">操作</div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var flag = 0;
+        window.onload = function(){
+            var Data = [{"imgUrl":"img/phone-1.jpg","Name":"小米10 青春版","Price":"1799"},
+                        {"imgUrl":"img/phone-1.jpg","Name":"小米100 青春版","Price":"1799"},
+                        {"imgUrl":"img/phone-1.jpg","Name":"小米1000 青春版","Price":"1799"},
+                        {"imgUrl":"img/phone-1.jpg","Name":"小米10 青春版","Price":"1799"},
+                         ];
+            var Box = document.getElementById("box");
+            var Car = document.getElementById("car");
+            var Ul = document.getElementsByTagName("ul")[0];
+            for(var i=0; i<Data.length; i++){
+                var Li = document.createElement("li");
+                var data = Data[i];
+                Li.innerHTML += '<div class="pro_img"><img src="'+data["imgUrl"]+'" width="150" height="150"></div>';
+                Li.innerHTML += '<h3 class="pro_name"><a href="#">'+data["Name"]+'</a></h3>';
+                Li.innerHTML += '<p class="pro_price">'+data["Price"]+'元</p>';
+                Li.innerHTML += '<div class="add_btn">加入购物车</div>';
+                Ul.appendChild(Li);
+            }
+            var Btn = getClass(Box,"add_btn");
+            var indic = 0;
+            for(var i=0; i<Btn.length; i++){
+                //console.log(Btn.length);
+                Btn[i].index = i;
+                Btn[i].onclick = function(){
+                    indic++;
+                    var Div = document.createElement("div");
+                    var data = Data[this.index];
+                    Div.className = "row hid";
+                    Div.innerHTML += '<div class="img left"><img src="'+data["imgUrl"]+'" width="80" height="80"></div>';
+                    Div.innerHTML += '<div class="name left"><span>'+data["Name"]+'</span></div>';
+                    Div.innerHTML += '<div class="price left"><span>'+data["Price"]+'元</span></div>';
+                    Div.innerHTML += '<div class="ctrl left"><a href="#">X</a></div>';
+                    Car.appendChild(Div);
+                    var delBtn = Div.lastChild.getElementsByTagName("a")[0];
+                    delBtn.onclick=function(){
+                        indic--;
+                        if(indic == 0){
+                        document.getElementById("checkoutbtn").style.background = "grey";
+                        flag =0;
+                        }
+                        Car.removeChild(Div);
+                    }
+                    if(indic != 0){
+                        document.getElementById("checkoutbtn").style.background = "#ff6700";
+                        flag = 1;
+                    }
+                }
+            }
+
+            function getClass(Box,tagname){
+                var Tag = Box.getElementsByTagName("*");
+                var Box = [];
+                for(var i=0; i<Tag.length; i++){
+                    if(Tag[i].className == tagname){
+                        Box.push(Tag[i]);
+                    }
+                }
+                return Box
+            }
+        }
+            $("#checkoutbtn").click(function(){
+                if(flag == 1){
+                    alert("下单成功");
+                    window.location.reload();
+                }
+                else
+                alert("下单失败");
+            });
+    </script>
+</html>
