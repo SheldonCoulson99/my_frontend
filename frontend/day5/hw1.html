@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <div id="app">
+        <ul>
+            <li @click='red()' :class='red()' v-for='(m, index) in moives'>{{index}}-{{m}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            moives:['a','b','c','d'],
+            isRed: 0,
+        },
+        methods:{
+            red: function(index){
+                console.log(index)
+                this.isRed = !this.isRed
+                return {Red: this.isRed}
+            }
+        }
+    })
+</script>
+<style>
+    .Red{
+        color: red;
+    }
+</style>
+</html>
